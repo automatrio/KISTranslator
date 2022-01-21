@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AngularDependenciesModule } from '../common/angular-dependencies.module';
+import { CommonSharedModule } from '../common/common-shared-module';
 import { ConsoleComponent } from './console/console.component';
 
 
@@ -11,7 +11,7 @@ import { ConsoleComponent } from './console/console.component';
   ],
   imports: [
     CommonModule,
-    AngularDependenciesModule
+    CommonSharedModule
   ],
   exports: [
     ConsoleComponent
