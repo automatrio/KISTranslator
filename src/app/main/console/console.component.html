@@ -1,0 +1,10 @@
+<div class="console-container">
+    <textarea
+      name="inputText"
+      #inputField
+      [(ngModel)]="inputText"
+      (focus)="clearOutFormForFirstInput()"
+      (ngModelChange)="parseText()">
+    </textarea>
+    <textarea class="output" [(ngModel)]="translatedText" disabled></textarea>
+</div>

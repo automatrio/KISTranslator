@@ -1,0 +1,44 @@
+.console-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 40px;
+    
+    height: calc(100% - 40px);
+
+
+    textarea {
+        background-color: rgba(18, 18, 28, 0.9);
+        box-shadow: 
+            0px 4px 10px 4px rgba(0, 0, 0, .4), 
+            0px 0px 1px 1px rgb(255, 72, 72, .4) inset,
+            0px 0px 1px 1px rgba(204, 5, 5, 0.8);
+        border: none;
+        outline: none;
+        color: white;
+        padding: 40px;
+        font-family: 'Jura', sans-serif !important;
+        min-width: 0px;
+        vertical-align: top;
+        overflow-wrap: break-word;
+        word-break: break-word;
+        word-wrap: break-word;
+        white-space: normal;
+        transition: 150ms;
+        &:focus {
+            background-color: rgba(18, 18, 28, 1);
+            box-shadow: 
+                0px 4px 15px 4px rgba(0, 0, 0, .4), 
+                0px 0px 1px 1px rgba(255, 72, 72, 0.527) inset,
+                0px 0px 1px 1px rgba(255, 65, 65, 0.8);
+        }
+    }
+    .output {
+        box-shadow: 
+            0px 4px 10px 4px rgba(0, 0, 0, .4), 
+            0px 0px 1px 1px rgba(72, 182, 255, 0.4) inset,
+            0px 0px 1px 1px rgba(0, 126, 185, 0.8);
+            font-family: 'Jura', sans-serif !important;
+        font-size: medium;
+    }
+}
