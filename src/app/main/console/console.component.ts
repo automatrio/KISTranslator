@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { TranslatorService } from 'src/app/common/services/translator.service';
+import { TranslatorService } from '../../common/services/translator.service';
 
 @Component({
   selector: 'app-console',
