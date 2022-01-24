@@ -31,7 +31,7 @@ export class ConsoleComponent implements OnInit {
   }
 
   public parseText() {
-    const result = this.translatorService.TranslateLine(this.inputText);
+    const result = this.translatorService.translateLine(this.inputText);
     this.translatedText = result;
   }
 }

@@ -13,7 +13,7 @@ export class TranslatorService {
   punctuationRegExp = new RegExp(/([,]+|[.]+|[?]+|[!]+)/);
   nonWhiteSpaceRegExp = new RegExp(/([^\s]+)/g);
 
-  public TranslateLine(line: string) {
+  public translateLine(line: string) {
     let translatedWords: string[] = [];
 
     // ES2020
@@ -26,30 +26,29 @@ export class TranslatorService {
     // ES2017
     let match: RegExpExecArray | null;
     while ((match = this.nonWhiteSpaceRegExp.exec(line)) !== null) {
-      const translatedWord = this.TranslateWord(match[0]);
+      const translatedWord = this.translateWord(match[0]);
       translatedWords.push(translatedWord);
     }
 
     return translatedWords.join(' ');
   }
 
-  private TranslateWord(word: string) {
+  private translateWord(word: string) {
     let prefix = '';
     let stem = '';
 
     const startsWithCapitalLetter = this.isCapitalRegExp.test(word);
-    const wordHasNoConsonants = !this.hasConsonants.test(word);
-
     const cleanedWord = word.replace(this.punctuationRegExp, '');
+    const wordHasNoConsonants = !this.hasConsonants.test(cleanedWord);
     const consonantalPrefixMatch = this.prefixRegExp.exec(cleanedWord);
     const isOrContainsNumber = this.isNumeric.test(cleanedWord);
     const punctuationMatch = this.punctuationRegExp.exec(word);
 
     if (wordHasNoConsonants) {
       [prefix, stem] =
-        this.AlterPrefixAndStem_WordsWithoutConsonants(cleanedWord);
+        this.alterPrefixAndStem_WordsWithoutConsonants(cleanedWord);
     } else if (consonantalPrefixMatch && consonantalPrefixMatch.length > 0) {
-      [prefix, stem] = this.AlterPrefixAndStem_RegularCaseWords(
+      [prefix, stem] = this.alterPrefixAndStem_RegularCaseWords(
         cleanedWord,
         consonantalPrefixMatch
       );
@@ -59,7 +58,7 @@ export class TranslatorService {
       prefix = cleanedWord;
     }
 
-    const translatedWord = this.ComposeWord(
+    const translatedWord = this.composeWord(
       prefix,
       stem,
       startsWithCapitalLetter
@@ -69,7 +68,7 @@ export class TranslatorService {
     return translatedWord + originalPunctuation;
   }
 
-  private ComposeWord(
+  private composeWord(
     prefix: string,
     stem: string,
     startsWithCapitalLetter: boolean
@@ -85,7 +84,7 @@ export class TranslatorService {
     return translatedWord;
   }
 
-  private AlterPrefixAndStem_RegularCaseWords(
+  private alterPrefixAndStem_RegularCaseWords(
     word: string,
     consonantalPrefixMatch: RegExpExecArray
   ) {
@@ -96,7 +95,7 @@ export class TranslatorService {
     return [prefix, stem];
   }
 
-  private AlterPrefixAndStem_WordsWithoutConsonants(word: string) {
+  private alterPrefixAndStem_WordsWithoutConsonants(word: string) {
     const prefix = 'y';
     const stem = word;
 
